@@ -1,1 +1,5 @@
-# AiEngineering_2025-02
+# AI-Engineering 
+
+Das ist unser Repository für den AI-Engineering Kurs.
+
+
