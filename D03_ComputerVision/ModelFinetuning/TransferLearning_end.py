@@ -16,7 +16,7 @@ train_dir = 'train'
 test_dir =  'test'
 
 transform = transforms.Compose([transforms.Resize(255), 
-    transforms.CenterCrop(224), 
+    transforms.CenterCrop(100), 
     transforms.ToTensor()]) 
  
 dataset = torchvision.datasets.ImageFolder(train_dir, transform= transform) 
@@ -33,6 +33,11 @@ def imshow(image_torch):
     plt.imshow(image_torch) 
  
 X_train, y_train = next(iter(train_loader)) 
+ 
+ 
+ #%%
+X_train.shape
+#%%
  
 # Make a grid from batch 
 image_grid = torchvision.utils.make_grid(X_train[:16, :, :, :], scale_each= True, nrow=4) 
@@ -101,7 +106,7 @@ sns.lineplot(x = range(len(train_losses)), y = train_losses)
 # %%
 fig = plt.figure(figsize=(10, 10)) 
 class_labels = {0:'cat', 1:'dog'} 
-X_test, y_test = iter(test_loader).next() 
+X_test, y_test = next(iter(test_loader)) 
 with torch.no_grad():
     y_pred = model(X_test) 
     y_pred = y_pred.round()
