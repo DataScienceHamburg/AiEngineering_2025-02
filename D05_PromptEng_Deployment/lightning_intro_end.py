@@ -42,7 +42,6 @@ train_loader = DataLoader(dataset = LinearRegressionDataset(X_np, y_np), batch_s
 
 
 #%%
-
 class LitLinearRegression(pl.LightningModule):
     def __init__(self, input_size, output_size):
         super(LitLinearRegression, self).__init__()
@@ -86,7 +85,7 @@ model = LitLinearRegression(input_size=1, output_size=1)
 # training
 early_stop_callback = EarlyStopping(monitor="train_loss", min_delta=0.00, patience=10, verbose=True, mode="min")
 
-trainer = pl.Trainer(accelerator='cpu', devices=1, max_epochs=500, log_every_n_steps=2, callbacks=[early_stop_callback])
+trainer = pl.Trainer(accelerator='gpu', devices=1, max_epochs=500, log_every_n_steps=2, callbacks=[early_stop_callback])
 trainer.fit(model=model, train_dataloaders=train_loader)
 
 # %% after how many steps the model converged?
