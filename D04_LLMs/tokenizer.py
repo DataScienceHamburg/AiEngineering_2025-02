@@ -2,7 +2,6 @@
 from transformers import AutoTokenizer
 
 #%%
- 
 def show_tokens(sentence: str, tokenizer_name: str):
     """ Show the tokens each separated by a different color """
     # Using ANSI color codes for background colors
@@ -33,12 +32,12 @@ def show_tokens(sentence: str, tokenizer_name: str):
         )
 #%%
 text = """
-Ich heiße Bert.
-🎵 鸟
-12.0*50=600
+# 12.0*50=600
 """
+# 🎵 鸟
+# Ich heiße Bert.
  
-show_tokens(text, "bert-base-cased")
+show_tokens(text, "gpt2")
 #%% 
 # show_tokens(text, "gpt2")
  
